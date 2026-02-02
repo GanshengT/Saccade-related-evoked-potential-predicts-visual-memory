@@ -1,66 +1,30 @@
 # Description
 
-This repository contains MATLAB / Python scripts for SEEG data processing and analysis for the manuscript titled ["Mind's eye: Saccade-related evoked potentials support visual encoding in humans"](https://pubmed.ncbi.nlm.nih.gov/41292659/)
+This repository contains MATLAB and Python scripts for SEEG data processing and analysis for the manuscript:
+["Mind's eye: Saccade-related evoked potentials support visual encoding in humans"](https://pubmed.ncbi.nlm.nih.gov/41292659/).
 
----
+## Folder overview
 
-## Structure
-root/
-│
-├── functions/
-│   ├── identify_ch_with_epileptic_discharge.m
-│   ├── co_registration_seeg.m
-│   └── …
-│
-├── data/
-│   ├── example subject (BJH025)
-        ├── Local field potential (LFP) timelocked to saccade onset during image presentation
-        ├── LFP timelocked to saccade onset during fixation cross
-        ├── EOG signals
-│   ├── electrode contact information
-    └── …
-│
-│
-├── results/
-│   ├── Saccade-related evoked potential (SREP) characterization (single-trial)
-    ├── Averaged SREP
-│
-│
-└── README.md
-
----
-
-## Functions
-
-### `identify_ch_with_epileptic_discharge`
-
-**Description**  
-Identifies SEEG channels exhibiting epileptic discharges 
-
-**Requirements**
-- MATLAB R2021b 
-- Signal Processing Toolbox
-
-**Input Data**
--  SEEG recordings 
----
-
-### `co_registration_seeg_electrodes`
-
-**Description**  
-Performs CT–MRI co-registration and maps SEEG electrodes to a referenced anatomical space.
-
-**Requirements**
-- MATLAB
-- FreeSurfer
-- ANTs
-- Gansheng Tan's imaging processing [toolbox] (https://github.com/GanshengT/intracranial_contact_loc)
+- `prep_oscillation_gaze.m`: main pipeline for SREP extraction, trial clustering, oscillation features, and gaze/behavior summaries.The following were included in `prep_oscillation_gaze.m` and correspond to Figure2 A-E: 
+    - Description and illustration workflow for calculating SREP.
+    - Validation of hierarchical clustering of trial responses.
+    - Quantification of distribution separation between clustered responses (including cluster separativity metrics and ROC/AUC-based comparisons).
+- `prep_erp_gaze_control.m`: control analyses for evoked responses.
+- `identify_ch_with_epileptic_discharge.m`: detection and flagging of channels with epileptic discharges.
+- `co_registration_seeg_electrodes.m`: CT-MRI co-registration and anatomical localization of SEEG contacts.
+- `viz_seeg_coverage.m`: MATLAB visualization for anatomical contact coverage.
+- `Fig1_coverage.ipynb`: Figure 1 coverage visualization workflow.
+- `Fig1_saccade_behavior.ipynb`: Figure 1 saccade-behavior analysis/visualization workflow.
+- `data/`: input data (including subject/session-level SEEG, gaze, and metadata files).
+- `result/`: saved analysis outputs (tables and MAT files).
+- `freesurfer_file/`: FreeSurfer segmentation resources used by visualization scripts.
+- `CircStat2012a/`: circular statistics toolbox dependency.
 
 
-## Data 
 
 
-## Result
+## Key outputs
 
-Analysis outputs are saved in `/result/`.
-
+- `result/*_gaze_properties.csv`: gaze-event level summaries.
+- `result/responsive_erp_*.mat`: channel-level SREP and clustering metrics.
+- `result/df_evoked_potential_*.mat`: trial-level evoked and oscillation features.
