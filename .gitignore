@@ -7,5 +7,5 @@ data/BJH025/*.mat
 .DS_Store
 **/.DS_Store
 
-.DS_Store
-**/.DS_Store
+# Large model artifacts
+*.joblib
