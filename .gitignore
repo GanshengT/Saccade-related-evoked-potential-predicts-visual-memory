@@ -3,4 +3,9 @@
 **/.ipynb_checkpoints/
 
 # macOS
+data/BJH025/*.mat
 .DS_Store
+**/.DS_Store
+
+.DS_Store
+**/.DS_Store
