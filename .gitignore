@@ -4,6 +4,8 @@
 
 # macOS
 data/BJH025/*.mat
+data/cv_similarity/perm_*/
+data/cv_similarity/df_row_fold_*.csv
 .DS_Store
 **/.DS_Store
 
